@@ -13,3 +13,7 @@ print(choice(x))
 # sample - returns amount numbers or symbols
 print(sample(x, 4))
 
+import math
+
+x = int(input())
+print(math.ceil(math.log(x, 2)))
