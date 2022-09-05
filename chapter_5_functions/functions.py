@@ -1,14 +1,5 @@
-import random
+from random import *
 
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
 
-def main(MIN: int, MAX: int):
-    again = "да"
-
-    while again == "да":
-        print("бросем кубики\nзначение граней")
-        print(random.randint(MIN, MAX))
-        print(random.randint(MIN, MAX))
-        again = input("бросить еще раз?: да/нет ")
-
-
-main(1, 6)
+shuffle(numbers)
