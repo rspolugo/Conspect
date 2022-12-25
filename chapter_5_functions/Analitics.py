@@ -29,16 +29,19 @@ from datetime import date
 
 
 #### Returns the current local date
+
 today = date.today().strftime('%Y:%m:%d')
 print("Today date is: ", today)
 
 # file_name=df1
 
 #### separation with symbol
+
 # string = 'жаба гадюка, гадюка жаба'
 # print(string.split(', '))
 
 #### creating df
+
 df3 = pd.DataFrame({
     'клиент id': [1, 10, 12, 43, 100],
     'пол': [0, 1, 0, 0, 1],
@@ -47,6 +50,7 @@ df3 = pd.DataFrame({
 })
 
 #### rename of columns
+
 correspondence=({
     'клиент id': 'client_id',
     'пол': 'sex',
@@ -57,13 +61,16 @@ df3.rename(columns=correspondence, inplace=True)
 # qv=df3.query('wealth=="medium" and age <30 and age>15') #creating of query
 
 #### creating columns a
+
 # df3['older_than_30'] = df3.age>30
 
 #### counting of unique values
+
 # print(df3.nunique())
 # print(df3)
 
 #### merger of two dfs
+
 # df4=pd.DataFrame({
 #     'client_id':[10, 12, 7250, 8619, 43],
 #     'amount':[42331, 88420, 1714, 80572, 57549],
@@ -72,14 +79,31 @@ df3.rename(columns=correspondence, inplace=True)
 # merge=df4.merge(df3, how='left', on='client_id')
 # print(merge)
 
+#### aggregating function from file
+
 # df6=pd.read_csv('https://stepik.org/media/attachments/lesson/359209/companies.csv', sep=';')
-#
 # print(df6.groupby('company').agg({'income': 'mean'}))
 # df6.to_excel('D:/statistics/example_stepik.xlsx')
 
-#### aggregating function from file
-def read_path_and_agg_and_print(path):
-    df6=pd.read_csv(path, sep=';')
-    res=print(df6.groupby('company').agg({'income': 'mean'}))
-    return res
-read_path_and_agg_and_print('https://stepik.org/media/attachments/lesson/359209/companies.csv')
+# def read_path_and_agg_and_print(path):
+#     df6=pd.read_csv(path, sep=';')
+#     res=print(df6.groupby('company').agg({'income': 'mean'}))
+#     return res
+# read_path_and_agg_and_print('https://stepik.org/media/attachments/lesson/359209/companies.csv')
+
+#### the most popular platform
+
+taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru.csv',sep=';', parse_dates=['start_at', 'end_at', 'arrived_at'])
+# print(taxi.dtypes)
+
+# print(taxi.shape) #count of strings
+# print(taxi.source.value_counts()/taxi.shape[0])
+# or the same
+# print(taxi.source.value_counts(normalize=True)) #share part
+print(
+    taxi
+      .source
+      .value_counts(normalize=True)
+      .mul(100)
+      .round(2)
+) #percent |.idxmax - largest value | .mul(100) - the same like *100
