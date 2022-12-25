@@ -93,17 +93,30 @@ df3.rename(columns=correspondence, inplace=True)
 
 #### the most popular platform
 
-taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru.csv',sep=';', parse_dates=['start_at', 'end_at', 'arrived_at'])
+taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru.csv', sep=';', parse_dates=['start_at', 'end_at', 'arrived_at'])
 # print(taxi.dtypes)
 
 # print(taxi.shape) #count of strings
 # print(taxi.source.value_counts()/taxi.shape[0])
 # or the same
 # print(taxi.source.value_counts(normalize=True)) #share part
+# print(
+#     taxi
+#       .source
+#       .value_counts(normalize=True)
+#       .mul(100)
+#       .round(2)
+# ) #percent |.idxmax - largest value | .mul(100) - the same like *100
+
+#### distribution driver points
+
 print(
     taxi
-      .source
-      .value_counts(normalize=True)
-      .mul(100)
-      .round(2)
-) #percent |.idxmax - largest value | .mul(100) - the same like *100
+    .driver_score
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(2)
+    .reset_index()
+    .rename(columns={'index': 'driver_score', 'driver_score': 'percentage'})
+    .sort_values('driver_score', ascending=False)
+)
