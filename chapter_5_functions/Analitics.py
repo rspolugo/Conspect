@@ -125,7 +125,7 @@ print(driver_score_counts)
 
 #### chart analisys
 
-ax=sns.barplot(x='driver_score', y='percentage', data='driver_score_counts', color='blue', alpha=0.5)
+ax=sns.barplot(x='driver_score', y='percentage', data=driver_score_counts, color='blue', alpha=0.5)
 
 ax.set(xlabel='Driver score', ylabel='Percentage')
 sns.despine() #put away part of graph's frame
