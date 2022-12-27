@@ -133,15 +133,17 @@ import matplotlib.pyplot as plt
 
 #### apply method
 
-df = pd.read_csv(
+df1 = pd.read_csv(
     'D:/statistics/kpop idols.csv')
 def underscore_rename(name):
     return name.replace(' ', '_')
 
-df = df.rename(columns=underscore_rename)
 def split_method_for_column(name):
     return name.split(' ')[-1]
 
+df = df1.rename(columns=underscore_rename)
+
 df = df.astype(str)
 
-print(df.Full_Name_Full_Name.apply(split_method_for_column))
+df['surname'] = df.Full_Name_Full_Name.apply(split_method_for_column)
+print(df)
