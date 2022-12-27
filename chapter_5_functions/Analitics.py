@@ -7,12 +7,12 @@ import matplotlib.pyplot as plt
 
 # df = pd.read_csv(
 #     'D:/statistics/kpop idols.csv')
-#
-#
+# #
+# #
 # def underscore_rename(name):
 #     return name.replace(' ', '_')
-#
-#
+# #
+# #
 # df = df.rename(columns=underscore_rename)
 #
 # df1=df.groupby('Group_Group', as_index=False).\
@@ -32,8 +32,8 @@ import matplotlib.pyplot as plt
 
 #### Returns the current local date
 
-today = date.today().strftime('%Y:%m:%d')
-print("Today date is: ", today)
+# today = date.today().strftime('%Y:%m:%d')
+# print("Today date is: ", today)
 
 # file_name=df1
 
@@ -44,22 +44,22 @@ print("Today date is: ", today)
 
 #### creating df
 
-df3 = pd.DataFrame({
-    'клиент id': [1, 10, 12, 43, 100],
-    'пол': [0, 1, 0, 0, 1],
-    'уровень': ['medium', 'high', 'low', 'medium', 'high'],
-    'возраст': [12, 43, 56, 23, 30]
-})
-
-#### rename of columns
-
-correspondence=({
-    'клиент id': 'client_id',
-    'пол': 'sex',
-    'уровень': 'wealth',
-    'возраст': 'age'
-})
-df3.rename(columns=correspondence, inplace=True)
+# df3 = pd.DataFrame({
+#     'клиент id': [1, 10, 12, 43, 100],
+#     'пол': [0, 1, 0, 0, 1],
+#     'уровень': ['medium', 'high', 'low', 'medium', 'high'],
+#     'возраст': [12, 43, 56, 23, 30]
+# })
+#
+# #### rename of columns
+#
+# correspondence=({
+#     'клиент id': 'client_id',
+#     'пол': 'sex',
+#     'уровень': 'wealth',
+#     'возраст': 'age'
+# })
+# df3.rename(columns=correspondence, inplace=True)
 # qv=df3.query('wealth=="medium" and age <30 and age>15') #creating of query
 
 #### creating columns a
@@ -95,7 +95,7 @@ df3.rename(columns=correspondence, inplace=True)
 
 #### the most popular platform
 
-taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru.csv', sep=';', parse_dates=['start_at', 'end_at', 'arrived_at'])
+# taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru.csv', sep=';', parse_dates=['start_at', 'end_at', 'arrived_at'])
 # print(taxi.dtypes)
 
 # print(taxi.shape) #count of strings
@@ -112,21 +112,36 @@ taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru
 
 #### distribution driver points
 
-driver_score_counts=taxi\
-    .driver_score\
-    .value_counts(normalize=True)\
-    .mul(100)\
-    .round(2)\
-    .reset_index()\
-    .rename(columns={'index': 'driver_score', 'driver_score': 'percentage'})\
-    .sort_values('driver_score', ascending=False)
+# driver_score_counts=taxi\
+#     .driver_score\
+#     .value_counts(normalize=True)\
+#     .mul(100)\
+#     .round(2)\
+#     .reset_index()\
+#     .rename(columns={'index': 'driver_score', 'driver_score': 'percentage'})\
+#     .sort_values('driver_score', ascending=False)
+#
+# print(driver_score_counts)
+#
+# #### chart analisys
+#
+# ax=sns.barplot(x='driver_score', y='percentage', data=driver_score_counts, color='blue', alpha=0.5)
+#
+# ax.set(xlabel='Driver score', ylabel='Percentage')
+# sns.despine() #put away part of graph's frame
+# plt.show()
 
-print(driver_score_counts)
+#### apply method
 
-#### chart analisys
+df = pd.read_csv(
+    'D:/statistics/kpop idols.csv')
+def underscore_rename(name):
+    return name.replace(' ', '_')
 
-ax=sns.barplot(x='driver_score', y='percentage', data=driver_score_counts, color='blue', alpha=0.5)
+df = df.rename(columns=underscore_rename)
+def split_method_for_column(name):
+    return name.split(' ')[-1]
 
-ax.set(xlabel='Driver score', ylabel='Percentage')
-sns.despine() #put away part of graph's frame
-plt.show()
+df = df.astype(str)
+
+print(df.Full_Name_Full_Name.apply(split_method_for_column))
