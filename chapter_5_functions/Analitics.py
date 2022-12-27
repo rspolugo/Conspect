@@ -2,6 +2,8 @@ import pandas as pd
 import openpyxl
 # Import date class from datetime module
 from datetime import date
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # df = pd.read_csv(
 #     'D:/statistics/kpop idols.csv')
@@ -110,13 +112,21 @@ taxi = pd.read_csv('https://stepik.org/media/attachments/lesson/359240/taxi_peru
 
 #### distribution driver points
 
-print(
-    taxi
-    .driver_score
-    .value_counts(normalize=True)
-    .mul(100)
-    .round(2)
-    .reset_index()
-    .rename(columns={'index': 'driver_score', 'driver_score': 'percentage'})
+driver_score_counts=taxi\
+    .driver_score\
+    .value_counts(normalize=True)\
+    .mul(100)\
+    .round(2)\
+    .reset_index()\
+    .rename(columns={'index': 'driver_score', 'driver_score': 'percentage'})\
     .sort_values('driver_score', ascending=False)
-)
+
+print(driver_score_counts)
+
+#### chart analisys
+
+ax=sns.barplot(x='driver_score', y='percentage', data='driver_score_counts', color='blue', alpha=0.5)
+
+ax.set(xlabel='Driver score', ylabel='Percentage')
+sns.despine() #put away part of graph's frame
+plt.show()
