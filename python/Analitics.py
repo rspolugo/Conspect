@@ -178,3 +178,14 @@ print(bookings.columns)
 # print(bookings\
 #     .query('assigned_room_type!=reserved_room_type')\
 #     .shape[0])
+
+#6
+# print(bookings.\
+#     query('arrival_date_year == 2016')\
+#     .arrival_date_month\
+#     .value_counts())
+#
+# print(bookings.\
+#     query('arrival_date_year == 2017')\
+#     .arrival_date_month\
+#     .value_counts())
