@@ -169,7 +169,12 @@ bookings=bookings.rename(columns=space_to_underscore)
 #4
 print(bookings.columns)
 
-print(bookings\
-      .groupby('hotel',as_index=False)\
-      .agg({'stays_total_nights': 'mean'})\
-      .round(2))
+# print(bookings\
+#       .groupby('hotel',as_index=False)\
+#       .agg({'stays_total_nights': 'mean'})\
+#       .round(2))
+
+#5
+# print(bookings\
+#     .query('assigned_room_type!=reserved_room_type')\
+#     .shape[0])
