@@ -160,4 +160,16 @@ def space_to_underscore(name):
     return name.replace(' ', '_').lower()
 
 bookings=bookings.rename(columns=space_to_underscore)
-print(bookings)
+#3
+# print(bookings.\
+#       query('is_canceled==0')\
+#       .country\
+#       .value_counts()[:5]
+#       )
+#4
+print(bookings.columns)
+
+print(bookings\
+      .groupby('hotel',as_index=False)\
+      .agg({'stays_total_nights': 'mean'})\
+      .round(2))
