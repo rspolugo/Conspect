@@ -133,17 +133,31 @@ import matplotlib.pyplot as plt
 
 #### apply method
 
-df1 = pd.read_csv(
-    'D:/statistics/kpop idols.csv')
-def underscore_rename(name):
-    return name.replace(' ', '_')
+# df1 = pd.read_csv(
+#     'D:/statistics/kpop idols.csv')
+# def underscore_rename(name):
+#     return name.replace(' ', '_')
+#
+# def split_method_for_column(name):
+#     return name.split(' ')[-1]
+#
+# df = df1.rename(columns=underscore_rename)
+#
+# df = df.astype(str)
 
-def split_method_for_column(name):
-    return name.split(' ')[-1]
+#5df['surname'] = df.Full_Name_Full_Name.apply(split_method_for_column)
+#or the same
+#### lamda
+# df['surname'] = df.Full_Name_Full_Name.apply(lambda x: x.split(' ')[-1])
 
-df = df1.rename(columns=underscore_rename)
+#### project
 
-df = df.astype(str)
+#1
+bookings = pd.read_csv('D:/statistics/code/2/Задания/Минипроект/bookings.csv', sep=';')
+bookings_head=bookings.head(7)
+#2
+def space_to_underscore(name):
+    return name.replace(' ', '_').lower()
 
-df['surname'] = df.Full_Name_Full_Name.apply(split_method_for_column)
-print(df)
+bookings=bookings.rename(columns=space_to_underscore)
+print(bookings)
