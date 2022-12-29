@@ -194,5 +194,9 @@ print(bookings.columns)
 #       .arrival_date_month
 #       .value_counts())
 
+####7 describe (or mean())
+print(bookings
+      [['adults','children','babies']].mean()
+      )
 
 
