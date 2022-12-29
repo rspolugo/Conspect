@@ -39,7 +39,7 @@ import matplotlib.pyplot as plt
 
 #### separation with symbol
 
-# string = 'жаба гадюка, гадюка жаба'
+# string = 'frog viper, viper frog'
 # print(string.split(', '))
 
 #### creating df
@@ -189,3 +189,10 @@ print(bookings.columns)
 #     query('arrival_date_year == 2017')\
 #     .arrival_date_month\
 #     .value_counts())
+# print(bookings.query('hotel == "City Hotel" and is_canceled == 1')
+#       .groupby('arrival_date_year')
+#       .arrival_date_month
+#       .value_counts())
+
+
+
