@@ -152,21 +152,26 @@ import matplotlib.pyplot as plt
 
 #### project
 
-#1
+#1 Импортируйте библиотеку pandas как pd. Загрузите датасет bookings.csv с разделителем ;.
+# Проверьте размер таблицы, типы переменных, а затем выведите первые 7 строк, чтобы посмотреть на данные.
+
 bookings = pd.read_csv('D:/statistics/code/2/Задания/Минипроект/bookings.csv', sep=';')
 bookings_head=bookings.head(7)
-#2
+#2 Приведите названия колонок к нижнему регистру и замените пробелы на знак нижнего подчеркивания.
+
 def space_to_underscore(name):
     return name.replace(' ', '_').lower()
 
 bookings=bookings.rename(columns=space_to_underscore)
-#3
+#3 Пользователи из каких стран совершили наибольшее число успешных бронирований? Укажите топ-5.
+
 # print(bookings.\
 #       query('is_canceled==0')\
 #       .country\
 #       .value_counts()[:5]
 #       )
-#4
+#4 На сколько ночей в среднем бронируют отели разных типов?
+
 print(bookings.columns)
 
 # print(bookings\
@@ -174,12 +179,15 @@ print(bookings.columns)
 #       .agg({'stays_total_nights': 'mean'})\
 #       .round(2))
 
-#5
+#5 Иногда тип номера, полученного клиентом (assigned_room_type), отличается от изначально забронированного (reserved_room_type).
+# Такое может произойти, например, по причине овербукинга. Сколько подобных наблюдений встретилось в датасете?
+
 # print(bookings\
 #     .query('assigned_room_type!=reserved_room_type')\
 #     .shape[0])
 
-#6
+#6 Сгруппируйте данные по годам и проверьте, на какой месяц бронирования отеля типа City Hotel отменялись чаще всего в каждый из периодов
+
 # print(bookings.\
 #     query('arrival_date_year == 2016')\
 #     .arrival_date_month\
@@ -194,9 +202,23 @@ print(bookings.columns)
 #       .arrival_date_month
 #       .value_counts())
 
-####7 describe (or mean())
-print(bookings
-      [['adults','children','babies']].mean()
-      )
+####7 describe (or mean()) Посмотрите на числовые характеристики трёх переменных: adults, children и babies. Какая из них имеет наибольшее среднее значение?
+# print(bookings
+#       [['adults', 'children', 'babies']].mean()
+#       )
 
-
+#8 Создайте колонку total_kids, объединив children и babies. Отели какого типа в среднем пользуются большей популярностью у клиентов с детьми?
+# bookings['total_kids'] = bookings.children + bookings.babies
+#
+# print(bookings.
+#       groupby('hotel').
+#       agg({'total_kids': 'mean'}).
+#       round(decimals=2).
+#       max())
+#9
+# bookings['has_kids']=bookings.total_kids>0
+#
+# no_kids_churn=bookings.query('is_canceled==1 and has_kids==False').shape[0]/bookings.query('has_kids==False').shape[0]
+# print(round(no_kids_churn*100,2))
+# yes_kids_churn=bookings.query('is_canceled==1 and has_kids==True').shape[0]/bookings.query('has_kids==True').shape[0]
+# print(round(yes_kids_churn*100,2))
