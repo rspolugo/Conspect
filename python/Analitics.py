@@ -263,8 +263,23 @@ print(logs)
 
 #4 Какую платформу предпочитают премиумные клиенты?
 
-udata_premium = user_data.query('premium==True')
-merge=udata_premium.merge(logs, how='left', on='client')
-print(merge.groupby("platform").
-      agg({'age': 'count'}).
-      sort_values('age', ascending=False)) #or value_counts()
+# udata_premium = user_data.query('premium==True')
+# merge=udata_premium.merge(logs, how='left', on='client')
+# print(merge.groupby("platform").
+#       agg({'age': 'count'}).
+#       sort_values('age', ascending=False)) #or value_counts()
+
+#5 Визуализируйте распределение возраста клиентов в зависимости от типа клиента (премиум или нет)
+
+barplot_clients=user_data.sort_values('premium')
+# ax=sns.distplot(barplot_clients.query('premium==False').age)
+# ax1=sns.distplot(barplot_clients.query('premium==True').age)
+# #
+# ax.set(xlabel='age', ylabel='premium')
+# sns.despine() #put away part of graph's frame
+# plt.show()
+# or on two different diagrams
+# fig, ax = plt.subplots(nrows=2, ncols=1)
+# sns.distplot(barplot_clients.query('premium==True').age, ax=ax[0], color='green')
+# sns.distplot(barplot_clients.query('premium==False').age, ax=ax[1], color='red')
+# plt.show()
