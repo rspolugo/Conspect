@@ -259,8 +259,12 @@ print(logs)
 
 #3 С какой платформы осуществляется наибольшее количество успешных операций?
 
-print (logs
-       .query('success == True')\
-      .groupby('client')\
-      .agg({'platform': 'count'})\
-      .sort_values('success_number', ascending=False))
+# print(logs.query('success == True').platform.value_counts().idxmax())
+
+#4 Какую платформу предпочитают премиумные клиенты?
+
+udata_premium = user_data.query('premium==True')
+merge=udata_premium.merge(logs, how='left', on='client')
+print(merge.groupby("platform").
+      agg({'age': 'count'}).
+      sort_values('age', ascending=False)) #or value_counts()
