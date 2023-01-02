@@ -155,14 +155,14 @@ import matplotlib.pyplot as plt
 #1 Импортируйте библиотеку pandas как pd. Загрузите датасет bookings.csv с разделителем ;.
 # Проверьте размер таблицы, типы переменных, а затем выведите первые 7 строк, чтобы посмотреть на данные.
 
-bookings = pd.read_csv('D:/statistics/code/2/Задания/Минипроект/bookings.csv', sep=';')
-bookings_head=bookings.head(7)
+# bookings = pd.read_csv('D:/statistics/code/2/Задания/Минипроект/bookings.csv', sep=';')
+# bookings_head=bookings.head(7)
 #2 Приведите названия колонок к нижнему регистру и замените пробелы на знак нижнего подчеркивания.
 
-def space_to_underscore(name):
-    return name.replace(' ', '_').lower()
-
-bookings=bookings.rename(columns=space_to_underscore)
+# def space_to_underscore(name):
+#     return name.replace(' ', '_').lower()
+#
+# bookings=bookings.rename(columns=space_to_underscore)
 #3 Пользователи из каких стран совершили наибольшее число успешных бронирований? Укажите топ-5.
 
 # print(bookings.\
@@ -172,7 +172,7 @@ bookings=bookings.rename(columns=space_to_underscore)
 #       )
 #4 На сколько ночей в среднем бронируют отели разных типов?
 
-print(bookings.columns)
+# print(bookings.columns)
 
 # print(bookings\
 #       .groupby('hotel',as_index=False)\
@@ -222,3 +222,45 @@ print(bookings.columns)
 # print(round(no_kids_churn*100,2))
 # yes_kids_churn=bookings.query('is_canceled==1 and has_kids==True').shape[0]/bookings.query('has_kids==True').shape[0]
 # print(round(yes_kids_churn*100,2))
+
+#### project2
+#1 Импортируйте библиотеку pandas как pd. Загрузите два датасета user_data и logs.
+# Проверьте размер таблицы, типы переменных, наличие пропущенных значений, описательную статистику.
+user_data = pd.read_csv('D:/statistics/code/3/Задания/Минипроект/user_data.csv', sep=',')
+logs = pd.read_csv('D:/statistics/code/3/Задания/Минипроект/logs.csv', sep=',')
+print(user_data)
+# print(user_data.shape)
+# print(user_data.dtypes)
+# print(user_data.isna().sum()) #or the same isnull()
+
+print(logs)
+# print(logs.shape)
+# print(logs.dtypes)
+# print(logs.isna().sum())
+
+# print(logs.columns)
+# print(user_data.columns)
+#
+# print(logs.platform.nunique())
+#
+# print(user_data.describe())# описательная статистика
+# print(logs.describe())
+
+#2 Какой клиент совершил больше всего успешных операций? (success == True)
+
+# success_number=logs.\
+#        query('success == True')\
+#       .groupby('client')\
+#       .agg({'platform': 'count'})\
+#       .rename(columns={'platform': 'success_number'})\
+#       .sort_values('success_number', ascending=False)
+#
+# print(success_number)
+
+#3 С какой платформы осуществляется наибольшее количество успешных операций?
+
+print (logs
+       .query('success == True')\
+      .groupby('client')\
+      .agg({'platform': 'count'})\
+      .sort_values('success_number', ascending=False))
