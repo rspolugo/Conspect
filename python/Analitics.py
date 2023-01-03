@@ -286,9 +286,9 @@ barplot_clients=user_data.sort_values('premium')
 
 #6 Постройте график распределения числа успешных операций
 
-success_trans = logs.groupby('client').agg({'success': 'sum'})
-sns.distplot(success_trans, kde=False)
-plt.show()
-
-print(success_trans)
-print(success_trans.success.value_counts())
+# success_trans = logs.groupby('client').agg({'success': 'sum'})
+# sns.distplot(success_trans, kde=False)
+# plt.show()
+#
+# print(success_trans)
+# print(success_trans.success.value_counts())
