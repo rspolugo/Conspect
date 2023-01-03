@@ -283,3 +283,12 @@ barplot_clients=user_data.sort_values('premium')
 # sns.distplot(barplot_clients.query('premium==True').age, ax=ax[0], color='green')
 # sns.distplot(barplot_clients.query('premium==False').age, ax=ax[1], color='red')
 # plt.show()
+
+#6 Постройте график распределения числа успешных операций
+
+success_trans = logs.groupby('client').agg({'success': 'sum'})
+sns.distplot(success_trans, kde=False)
+plt.show()
+
+print(success_trans)
+print(success_trans.success.value_counts())
