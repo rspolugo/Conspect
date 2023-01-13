@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 import openpyxl
 # Import date class from datetime module
 from datetime import date
@@ -226,14 +227,14 @@ import matplotlib.pyplot as plt
 #### project2
 #1 Импортируйте библиотеку pandas как pd. Загрузите два датасета user_data и logs.
 # Проверьте размер таблицы, типы переменных, наличие пропущенных значений, описательную статистику.
-user_data = pd.read_csv('D:/statistics/code/3/Задания/Минипроект/user_data.csv', sep=',')
-logs = pd.read_csv('D:/statistics/code/3/Задания/Минипроект/logs.csv', sep=',')
-print(user_data)
-# print(user_data.shape)
-# print(user_data.dtypes)
-# print(user_data.isna().sum()) #or the same isnull()
-
-print(logs)
+# user_data = pd.read_csv('D:/statistics/code/3/Задания/Минипроект/user_data.csv', sep=',')
+# logs = pd.read_csv('D:/statistics/code/3/Задания/Минипроект/logs.csv', sep=',')
+# print(user_data)
+# # print(user_data.shape)
+# # print(user_data.dtypes)
+# # print(user_data.isna().sum()) #or the same isnull()
+#
+# print(logs)
 # print(logs.shape)
 # print(logs.dtypes)
 # print(logs.isna().sum())
@@ -271,14 +272,14 @@ print(logs)
 
 #5 Визуализируйте распределение возраста клиентов в зависимости от типа клиента (премиум или нет)
 
-barplot_clients=user_data.sort_values('premium')
+# barplot_clients=user_data.sort_values('premium')
 # ax=sns.distplot(barplot_clients.query('premium==False').age)
 # ax1=sns.distplot(barplot_clients.query('premium==True').age)
 # #
 # ax.set(xlabel='age', ylabel='premium')
 # sns.despine() #put away part of graph's frame
 # plt.show()
-# or on two different diagrams
+# # or on two different diagrams
 # fig, ax = plt.subplots(nrows=2, ncols=1)
 # sns.distplot(barplot_clients.query('premium==True').age, ax=ax[0], color='green')
 # sns.distplot(barplot_clients.query('premium==False').age, ax=ax[1], color='red')
@@ -292,3 +293,6 @@ barplot_clients=user_data.sort_values('premium')
 #
 # print(success_trans)
 # print(success_trans.success.value_counts())
+
+files=os.listdir('D:/downloads/')
+[print(i) for i in files if not i.startswith('[Udemy]') and not i.startswith('Udemy')]
