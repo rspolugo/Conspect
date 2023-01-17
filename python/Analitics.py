@@ -295,7 +295,19 @@ import matplotlib.pyplot as plt
 # print(success_trans.success.value_counts())
 
 
-p='D:/statistics/karpov_example.txt'
-for i in open(p).readlines():
-    print(i)
+# p='D:/statistics/karpov_example.txt'
+# for i in open(p).readlines():
+#     print(i)
 # open(p).readlines()
+
+# x=[1,2,3,'start',4,5,"end",6]
+# scan= False
+# for i in x:
+#     if i=='end':
+#         scan=False
+#         continue
+#     if i == 'start':
+#         scan=True
+#         continue
+#     if scan:
+#         print(i)
