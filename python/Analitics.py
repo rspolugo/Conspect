@@ -294,5 +294,8 @@ import matplotlib.pyplot as plt
 # print(success_trans)
 # print(success_trans.success.value_counts())
 
-files=os.listdir('D:/downloads/')
-[print(i) for i in files if not i.startswith('[Udemy]') and not i.startswith('Udemy')]
+
+p='D:/statistics/karpov_example.txt'
+for i in open(p).readlines():
+    print(i)
+# open(p).readlines()
