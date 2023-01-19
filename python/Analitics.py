@@ -300,14 +300,14 @@ import matplotlib.pyplot as plt
 #     print(i)
 # open(p).readlines()
 
-x=[1,2,3,'start',4,5,"end",6]
-scan= False
-for i in x:
-    if i=='end':
-        scan=False
-        continue
-    if i == 'start':
-        scan=True
-        continue
-    if scan:
-        print(i)
+# x=[1,2,3,'start',4,5,"end",6]
+# scan= False
+# for i in x:
+#     if i=='end':
+#         scan=False
+#         continue
+#     if i == 'start':
+#         scan=True
+#         continue
+#     if scan:
+#         print(i)
