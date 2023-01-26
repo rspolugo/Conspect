@@ -311,3 +311,23 @@ import matplotlib.pyplot as plt
 #         continue
 #     if scan:
 #         print(i)
+
+# string's format
+# df = pd.DataFrame({'a':[1,2,3], 'b':['aaa', 'bbb', 'ccc']})
+# print(df)
+#
+# template = 'df has {} rows and {} columns'
+# df_shape = template.format(df.shape[0], df.shape[1])
+# print(df_shape)
+# print(f'df has {df.shape[0]} rows and {df.shape[1]} columns')
+
+# lost values
+df = pd.DataFrame({'a':[1,None,3], 'b':['aaa', None, None]})
+# print(df)
+# print(df.isna())
+# na_number = df.isna().sum()
+# print(na_number)
+
+# data types
+df_types=df.dtypes
+
