@@ -322,12 +322,34 @@ import matplotlib.pyplot as plt
 # print(f'df has {df.shape[0]} rows and {df.shape[1]} columns')
 
 # lost values
-df = pd.DataFrame({'a':[1,None,3], 'b':['aaa', None, None]})
+# df = pd.DataFrame({'a':[1,None,3], 'b':['aaa', None, None]})
 # print(df)
 # print(df.isna())
 # na_number = df.isna().sum()
 # print(na_number)
 
 # data types
-df_types=df.dtypes
+# df_types=df.dtypes
 
+# convert types
+# df = pd.DataFrame({'a':[1,None,3], 'age':['15', '33', '10']})
+# # print(df.astype({'age':int}).dtypes)
+#
+# print(df.dtypes)
+# df['age'] = df['age'].astype('int')
+# print(df.types)
+
+# drop columns
+# data = {
+#     'client':[1,2,3],
+#     'age':[22, 33, 33],
+#     'sex':['F','F','M'],
+#     'wealth':['medium','medium','high']
+# }
+#
+# df=pd.DataFrame(data)
+# print(df)
+#
+# df=df.drop(columns=['age','sex'])
+# df=df.drop(index=0)
+# print(df)
