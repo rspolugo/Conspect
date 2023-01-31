@@ -353,3 +353,21 @@ import matplotlib.pyplot as plt
 # df=df.drop(columns=['age','sex'])
 # df=df.drop(index=0)
 # print(df)
+
+# Соберите все данные из папки data в один датафрэйм, имеющий следующие столбцы:
+# колонки из самих файлов (product_id, quantity), а также имя пользователя (name),
+# и дата этих покупок (date, соответствует названию папки, где лежит папка с пользователем)
+
+# print(os.listdir('D:/statistics/code/4/Задания/Минипроект/data/2020-12-08/Alexey_Fedorov'))
+# print(pd.read_csv('D:/statistics/code/4/Задания/Минипроект/data/2020-12-08/Alexey_Fedorov/data.csv'))
+path = 'D:/statistics/code/4/Задания/Минипроект/data/2020-12-05'
+print(os.listdir(path))
+df=pd.DataFrame()
+for current_path, dirs, files in os.walk(path):
+    for file in files:
+       data_path=f'{current_path}/{file}'
+       temp_df=pd.read_csv(data_path)
+       df=pd.concat(df, temp_df)
+       print(df.shape)
+
+
