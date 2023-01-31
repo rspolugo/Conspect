@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from pathlib import Path
 import openpyxl
 # Import date class from datetime module
 from datetime import date
@@ -361,7 +362,7 @@ import matplotlib.pyplot as plt
 
 # print(os.listdir('D:/statistics/code/4/Задания/Минипроект/data/2020-12-08/Alexey_Fedorov'))
 # print(pd.read_csv('D:/statistics/code/4/Задания/Минипроект/data/2020-12-08/Alexey_Fedorov/data.csv'))
-# path = 'D:/statistics/code/4/Задания/Минипроект/data/2020-12-05'
+
 # # print(os.listdir(path))
 # df=pd.DataFrame()
 # for current_path, dirs, files in os.walk(path):
@@ -380,4 +381,27 @@ import matplotlib.pyplot as plt
 #         df=pd.concat(df, temp_df)
 #         print(df.shape)
 
+# create df for all data
+df=pd.DataFrame()
+
+# Read data from all files and add it to general df
+path = Path('D:/statistics/code/4/Задания/Минипроект/data')
+for current_path, dirs, files in os.walk(path):
+    for file in files:
+        part_path=Path(current_path)
+        data_path = part_path/file
+
+        # Read data
+        temp_df = pd.read_csv(data_path)
+
+        # Extract date and name
+        date = data_path.parts[-3]
+        name = data_path.parts[-2]
+
+        # add date and name columns
+        temp_df['date'] = date
+        temp_df['name'] = name
+        # insert data into main df
+        df=pd.concat((df, temp_df))
+print(df)
 
