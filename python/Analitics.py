@@ -6,6 +6,7 @@ from datetime import date
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 # df = pd.read_csv(
 #     'D:/statistics/kpop idols.csv')
 # #
@@ -360,14 +361,23 @@ import matplotlib.pyplot as plt
 
 # print(os.listdir('D:/statistics/code/4/Задания/Минипроект/data/2020-12-08/Alexey_Fedorov'))
 # print(pd.read_csv('D:/statistics/code/4/Задания/Минипроект/data/2020-12-08/Alexey_Fedorov/data.csv'))
-path = 'D:/statistics/code/4/Задания/Минипроект/data/2020-12-05'
-print(os.listdir(path))
-df=pd.DataFrame()
-for current_path, dirs, files in os.walk(path):
-    for file in files:
-       data_path=f'{current_path}/{file}'
-       temp_df=pd.read_csv(data_path)
-       df=pd.concat(df, temp_df)
-       print(df.shape)
+# path = 'D:/statistics/code/4/Задания/Минипроект/data/2020-12-05'
+# # print(os.listdir(path))
+# df=pd.DataFrame()
+# for current_path, dirs, files in os.walk(path):
+#     for file in files:
+#         data_path=f'{current_path}/{file}'
+#
+#         temp_df=pd.read_csv(data_path)
+#
+#         path_parts=current_path.split('/')
+#         date = path_parts[-2]
+#         name = path_parts[-1]
+#
+#         temp_df['date'] = date
+#         temp_df['date'] = name
+#
+#         df=pd.concat(df, temp_df)
+#         print(df.shape)
 
 
