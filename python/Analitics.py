@@ -1,11 +1,24 @@
 import pandas as pd
 import os
 from pathlib import Path
+from datetime import datetime
+from airflow import DAG
+from apache-airflow.operators.python_operator import PythonOperator
 import openpyxl
 # Import date class from datetime module
 from datetime import date
 import seaborn as sns
 import matplotlib.pyplot as plt
+
+default_args = {
+'owner': 'rspolugo',
+'depends_on_past': False,
+'start_date': datetime(2023, 3, 5),
+'retries': 0
+}
+dag = DAG('hello_world',
+default_args=default_args,
+schedule_interval='00 12 * * 1')
 
 
 # df = pd.read_csv(
@@ -382,26 +395,26 @@ import matplotlib.pyplot as plt
 #         print(df.shape)
 
 # create df for all data
-df=pd.DataFrame()
-
-# Read data from all files and add it to general df
-path = Path('D:/statistics/code/4/Задания/Минипроект/data')
-for current_path, dirs, files in os.walk(path):
-    for file in files:
-        part_path=Path(current_path)
-        data_path = part_path/file
-
-        # Read data
-        temp_df = pd.read_csv(data_path)
-
-        # Extract date and name
-        date = data_path.parts[-3]
-        name = data_path.parts[-2]
-
-        # add date and name columns
-        temp_df['date'] = date
-        temp_df['name'] = name
-        # insert data into main df
-        df=pd.concat((df, temp_df))
-print(df)
+# df=pd.DataFrame()
+#
+# # Read data from all files and add it to general df
+# path = Path('D:/statistics/code/4/Задания/Минипроект/data')
+# for current_path, dirs, files in os.walk(path):
+#     for file in files:
+#         part_path=Path(current_path)
+#         data_path = part_path/file
+#
+#         # Read data
+#         temp_df = pd.read_csv(data_path)
+#
+#         # Extract date and name
+#         date = data_path.parts[-3]
+#         name = data_path.parts[-2]
+#
+#         # add date and name columns
+#         temp_df['date'] = date
+#         temp_df['name'] = name
+#         # insert data into main df
+#         df=pd.concat((df, temp_df))
+# print(df)
 
